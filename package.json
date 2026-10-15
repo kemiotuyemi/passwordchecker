@@ -1,0 +1,17 @@
+{
+  "name": "password-strength-checker",
+  "version": "1.0.0",
+  "description": "Client-side password strength checker web application",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/",
+    "serve": "python3 -m http.server 4173"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "puppeteer-core": "^23.11.1"
+  }
+}

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="Check how strong your password is before you use it. Everything runs in your browser — your password never leaves your device.">
+  <title>Password Strength Checker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <header class="app__header">
+      <h1 class="app__title">Password Strength Checker</h1>
+      <p class="app__tagline">
+        Evaluate a password against five basic strength requirements and get
+        instant feedback. Your password is checked entirely in your browser
+        and is never sent, stored, or logged.
+      </p>
+    </header>
+
+    <form class="checker" id="checker-form" novalidate autocomplete="off">
+      <div class="field field--toggle">
+        <div class="field__check">
+          <input type="checkbox" id="use-name" checked>
+          <label for="use-name">Check my password against my name</label>
+        </div>
+      </div>
+
+      <div class="field" id="name-field">
+        <label class="field__label" for="name">
+          Your name <span class="field__optional">(optional)</span>
+        </label>
+        <p class="field__hint" id="name-hint">
+          Used only for this check, to detect name-based password patterns.
+        </p>
+        <input
+          class="field__input"
+          type="text"
+          id="name"
+          name="name"
+          autocomplete="name"
+          aria-describedby="name-hint"
+        >
+        <p class="field__error" id="name-error" role="alert" hidden></p>
+      </div>
+
+      <div class="field">
+        <label class="field__label" for="password">Password</label>
+        <div class="field__control">
+          <input
+            class="field__input"
+            type="password"
+            id="password"
+            name="password"
+            autocomplete="new-password"
+            aria-describedby="password-error"
+          >
+          <button
+            class="field__toggle"
+            type="button"
+            id="toggle-password"
+            aria-pressed="false"
+            aria-controls="password"
+          >
+            Show
+          </button>
+        </div>
+        <p class="field__error" id="password-error" role="alert" hidden></p>
+      </div>
+
+      <div class="field">
+        <label class="field__label" for="confirm">Confirm password</label>
+        <p class="field__hint" id="confirm-hint">
+          Type the same password again. This field stays hidden.
+        </p>
+        <input
+          class="field__input"
+          type="password"
+          id="confirm"
+          name="confirm"
+          autocomplete="new-password"
+          aria-describedby="confirm-hint confirm-error"
+        >
+        <p class="field__error" id="confirm-error" role="alert" hidden></p>
+      </div>
+
+      <div class="checker__actions">
+        <button class="button button--primary" type="submit">
+          Check Password
+        </button>
+      </div>
+    </form>
+
+    <section
+      class="results"
+      id="results"
+      aria-live="polite"
+      aria-atomic="true"
+      tabindex="-1"
+      hidden
+    >
+      <div class="results__summary" id="results-summary"></div>
+      <div class="results__body" id="results-body"></div>
+      <div class="results__actions" id="results-actions">
+        <button class="button button--secondary" type="button" id="reset-button">
+          Check Another Password
+        </button>
+      </div>
+    </section>
+
+    <footer class="app__footer">
+      <p>
+        This tool is an educational indicator of password quality. It does not
+        guarantee a password is safe from guessing or data breaches.
+      </p>
+    </footer>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
